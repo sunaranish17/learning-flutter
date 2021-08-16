@@ -15,6 +15,21 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final questions = const [
+    {
+      'questionText': 'Whats your favourite color?',
+      'answers': ['Black', 'White', 'Purple', 'Green'],
+    },
+    {
+      'questionText': 'What\'s your favourite animal?',
+      'answers': ['Tiger', 'Lion', 'Elephant', 'Rhino'],
+    },
+    {
+      'questionText': 'What\'s is your favourite language?',
+      'answers': ['JavaScript', 'Java', 'Python', 'Dart'],
+    },
+  ];
+
   var _questionIndex = 0;
 
   void _answerQuestion() {
@@ -22,29 +37,34 @@ class _MyAppState extends State<MyApp> {
       _questionIndex = _questionIndex + 1;
     });
     print("Question Answered");
+
+    if (_questionIndex < questions.length) {
+      print("We have more questions");
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
-      'What\'s your favourite color?',
-      'What\'s your favourite animal?',
-    ];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Text("First Flutter App"),
         ),
-        body: Column(
-          children: [
-            Question(
-              questions[_questionIndex],
-            ),
-            Answer(_answerQuestion),
-            Answer(_answerQuestion),
-            Answer(_answerQuestion),
-          ],
-        ),
+        body: _questionIndex < questions.length
+            ? Column(
+                children: [
+                  Question(
+                    questions[_questionIndex]['questionText'] as String,
+                  ),
+                  ...(questions[_questionIndex]['answers'] as List<String>)
+                      .map((answer) {
+                    return Answer(_answerQuestion, answer);
+                  }).toList()
+                ],
+              )
+            : Center(
+                child: Text("You did it!"),
+              ),
       ),
     );
   }
