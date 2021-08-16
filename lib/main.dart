@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:learning_flutter/answer.dart';
-import 'package:learning_flutter/question.dart';
 import 'package:learning_flutter/quiz.dart';
+import 'package:learning_flutter/result.dart';
 
 void main() {
   runApp(MyApp());
@@ -48,19 +47,16 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text("First Flutter App"),
-        ),
-        body: _questionIndex < _questions.length
-            ? Quiz(
-                answerQuestion: _answerQuestion,
-                questionIndex: _questionIndex,
-                questions: _questions,
-              )
-            : Center(
-                child: Text("You did it"),
-              ),
-      ),
+          appBar: AppBar(
+            title: Text("First Flutter App"),
+          ),
+          body: _questionIndex < _questions.length
+              ? Quiz(
+                  answerQuestion: _answerQuestion,
+                  questionIndex: _questionIndex,
+                  questions: _questions,
+                )
+              : Result()),
     );
   }
 }
