@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learning_flutter/config/palette.dart';
+import 'package:learning_flutter/data/data.dart';
 import 'package:learning_flutter/widgets/widgets.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -42,6 +43,8 @@ class _HomeScreenState extends State<HomeScreen> {
               )
             ],
           ),
+          SliverToBoxAdapter(
+              child: CreatePostContainer(currentUser: currentUser)),
         ],
       ),
     );
