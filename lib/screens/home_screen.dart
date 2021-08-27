@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learning_flutter/config/palette.dart';
 import 'package:learning_flutter/data/data.dart';
+import 'package:learning_flutter/widgets/stories.dart';
 import 'package:learning_flutter/widgets/widgets.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -51,6 +52,15 @@ class _HomeScreenState extends State<HomeScreen> {
             sliver: SliverToBoxAdapter(
               child: Rooms(
                 onlineUsers: onlineUsers,
+              ),
+            ),
+          ),
+          SliverPadding(
+            padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 5.0),
+            sliver: SliverToBoxAdapter(
+              child: Stories(
+                stories: stories,
+                user: currentUser,
               ),
             ),
           ),
