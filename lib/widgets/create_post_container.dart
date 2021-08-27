@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:learning_flutter/models/models.dart';
 import 'package:learning_flutter/widgets/widgets.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learning_flutter/config/palette.dart';
 import 'package:learning_flutter/data/data.dart';
+import 'package:learning_flutter/models/models.dart';
 import 'package:learning_flutter/widgets/stories.dart';
 import 'package:learning_flutter/widgets/widgets.dart';
 
@@ -64,6 +65,15 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                final Post post = posts[index];
+                return PostContainer(post: post);
+              },
+              childCount: posts.length,
+            ),
+          )
         ],
       ),
     );
