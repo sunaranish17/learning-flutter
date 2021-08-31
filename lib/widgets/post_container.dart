@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:learning_flutter/models/models.dart';
 import 'package:learning_flutter/widgets/widgets.dart';
@@ -17,14 +18,41 @@ class PostContainer extends StatelessWidget {
         vertical: 8.0,
       ),
       color: Colors.white,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 12.0,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [_PostHeader(post: post)],
-        ),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 12.0,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                _PostHeader(post: post),
+                const SizedBox(
+                  height: 4.0,
+                ),
+                Text(post.caption),
+                post.imageUrl != null
+                    ? const SizedBox.shrink()
+                    : const SizedBox(
+                        height: 6.0,
+                      ),
+              ],
+            ),
+          ),
+          post.imageUrl != null
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: CachedNetworkImage(imageUrl: post.imageUrl!),
+                )
+              : const SizedBox.shrink(),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 12.0,
+            ),
+            // child:
+          )
+        ],
       ),
     );
   }
@@ -77,7 +105,7 @@ class _PostHeader extends StatelessWidget {
           icon: Icon(
             Icons.more_horiz,
           ),
-        )
+        ),
       ],
     );
   }
