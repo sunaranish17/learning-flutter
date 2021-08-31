@@ -20,7 +20,7 @@ class _NavScreenState extends State<NavScreen> {
     Icons.home,
     Icons.ondemand_video,
     Icons.account_circle_outlined,
-    Icons.account_tree_outlined,
+    Icons.group,
     Icons.menu,
   ];
 
@@ -30,11 +30,24 @@ class _NavScreenState extends State<NavScreen> {
     return DefaultTabController(
         length: _icons.length,
         child: Scaffold(
-          body: _screens[_selectedIndex],
-          bottomNavigationBar: CustomTabBar(
-              icons: _icons,
-              selectedIndex: _selectedIndex,
-              onTap: (index) => setState(() => _selectedIndex = index)),
+          // body: _screens[_selectedIndex],  First Approach
+          // body: TabBarView(
+          //   physics: NeverScrollableScrollPhysics(),   //Second approach
+          //   children: _screens,
+          // ),
+          body: IndexedStack(
+            index: _selectedIndex,
+            children: _screens,
+          ),
+          bottomNavigationBar: Padding(
+            padding: const EdgeInsets.only(
+              bottom: 12.0,
+            ),
+            child: CustomTabBar(
+                icons: _icons,
+                selectedIndex: _selectedIndex,
+                onTap: (index) => setState(() => _selectedIndex = index)),
+          ),
         ));
   }
 }
