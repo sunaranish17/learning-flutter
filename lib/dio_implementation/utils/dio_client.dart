@@ -47,4 +47,35 @@ class DioClient {
     }
     return retrievedUser;
   }
+
+  Future<UserInfo?> updateUser({
+    required UserInfo userInfo,
+    required String id,
+  }) async {
+    UserInfo? updatedUser;
+
+    try {
+      Response response = await _dio.put(
+        _baseURL + '/users/$id',
+        data: userInfo.toJson(),
+      );
+
+      print('User updated: ${response.data}');
+
+      updatedUser = UserInfo.fromJson(response.data);
+    } catch (e) {
+      print('Error updating user: $e');
+    }
+
+    return updatedUser;
+  }
+
+  Future<void> deleteUser({required String id}) async {
+    try {
+      await _dio.delete(_baseURL + '/users/$id');
+      print('User deleted!');
+    } catch (e) {
+      print('Error deleting user: $e');
+    }
+  }
 }
