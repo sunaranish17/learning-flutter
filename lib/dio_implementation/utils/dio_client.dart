@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:learning_flutter/dio_implementation/models/user.dart';
+import 'package:learning_flutter/dio_implementation/models/user_info.dart';
 
 class DioClient {
   final Dio _dio = Dio();
@@ -27,5 +28,23 @@ class DioClient {
     }
 
     return user!;
+  }
+
+  Future<UserInfo?> createUser({required UserInfo userInfo}) async {
+    UserInfo? retrievedUser;
+
+    try {
+      Response response = await _dio.post(
+        _baseURL + '/users',
+        data: userInfo.toJson(),
+      );
+
+      print("User created: ${response.data}");
+
+      retrievedUser = UserInfo.fromJson(response.data);
+    } on DioError catch (e) {
+      print("Error creating user: $e");
+    }
+    return retrievedUser;
   }
 }
