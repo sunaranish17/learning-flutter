@@ -40,6 +40,22 @@ class Quiz extends StatelessWidget {
             },
             child: Text("Dio Implementation =>"),
           ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(
+            top: 50.0,
+          ),
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomePage(),
+                ),
+              );
+            },
+            child: Text("Hive  =>"),
+          ),
         )
       ],
     );

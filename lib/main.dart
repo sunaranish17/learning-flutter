@@ -1,9 +1,19 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:learning_flutter/quiz.dart';
 import 'package:learning_flutter/result.dart';
+import 'package:path_provider/path_provider.dart';
+// import 'package:path_provider/path_provider.dart' as path_provider;
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Directory document = await getApplicationDocumentsDirectory();
+  Hive.init(document.path);
   runApp(MyApp());
+
+  final contactsBox = await Hive.openBox('contacts');
 }
 
 class MyApp extends StatefulWidget {
