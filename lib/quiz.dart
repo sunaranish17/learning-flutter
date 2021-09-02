@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learning_flutter/dio_implementation/home_page.dart';
+import 'package:learning_flutter/hive_implemntation/screens/hive_home_page.dart';
 import './answer.dart';
 import './question.dart';
 
@@ -50,7 +51,7 @@ class Quiz extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => HomePage(),
+                  builder: (context) => HiveHomePage(),
                 ),
               );
             },
