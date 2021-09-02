@@ -15,6 +15,9 @@ class _NewContactFormState extends State<NewContactForm> {
   String? _name;
   String? _age;
 
+  final _nameController = TextEditingController();
+  final _ageController = TextEditingController();
+
   void addContact(Contact contact) {
     final contactsBox = Hive.box('contacts');
     contactsBox.add(contact);
@@ -30,17 +33,24 @@ class _NewContactFormState extends State<NewContactForm> {
             children: [
               Expanded(
                 child: TextFormField(
+                  controller: _nameController,
                   decoration: InputDecoration(labelText: 'Name'),
-                  onSaved: (value) => _name = value,
+                  onSaved: (value) {
+                    _name = value;
+                    _nameController.clear();
+                  },
                 ),
               ),
               SizedBox(width: 10),
               Expanded(
                 child: TextFormField(
-                  decoration: InputDecoration(labelText: 'Age'),
-                  keyboardType: TextInputType.number,
-                  onSaved: (value) => _age = value,
-                ),
+                    controller: _ageController,
+                    decoration: InputDecoration(labelText: 'Age'),
+                    keyboardType: TextInputType.number,
+                    onSaved: (value) {
+                      _age = value;
+                      _ageController.clear();
+                    }),
               ),
             ],
           ),
