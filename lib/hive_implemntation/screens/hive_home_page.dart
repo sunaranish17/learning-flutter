@@ -28,7 +28,7 @@ class _HiveHomePageState extends State<HiveHomePage> {
             else
               return ContactPage();
           } else
-            return Scaffold();
+            return CircularProgressIndicator();
         },
       ),
     );
