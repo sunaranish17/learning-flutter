@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learning_flutter/quiz.dart';
 import 'package:learning_flutter/result.dart';
+import 'package:splashscreen/splashscreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -72,17 +73,26 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("First Flutter App"),
+      home: SplashScreen(
+        seconds: 5,
+        title: Text(
+          "My First Flutter App",
+          style: TextStyle(fontSize: 17.0),
         ),
-        body: _questionIndex < _questions.length
-            ? Quiz(
-                answerQuestion: _answerQuestion,
-                questionIndex: _questionIndex,
-                questions: _questions,
-              )
-            : Result(_totalScore, _resetQuiz),
+        navigateAfterSeconds: Scaffold(
+          appBar: AppBar(
+            title: Text("First Flutter App"),
+          ),
+          body: _questionIndex < _questions.length
+              ? Quiz(
+                  answerQuestion: _answerQuestion,
+                  questionIndex: _questionIndex,
+                  questions: _questions,
+                )
+              : Result(_totalScore, _resetQuiz),
+        ),
+        backgroundColor: Colors.lightBlueAccent,
+        loadingText: Text("Welcome to my App"),
       ),
     );
   }
