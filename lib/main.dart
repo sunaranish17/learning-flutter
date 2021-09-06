@@ -79,6 +79,8 @@ class _MyAppState extends State<MyApp> {
           "My First Flutter App",
           style: TextStyle(fontSize: 17.0),
         ),
+        image: new Image.asset('assets/images/iphone_image.jpeg'),
+        // imageBackground: AssetImage('assets/images/iphone_image.jpeg'), Adding an image at background
         navigateAfterSeconds: Scaffold(
           appBar: AppBar(
             title: Text("First Flutter App"),
