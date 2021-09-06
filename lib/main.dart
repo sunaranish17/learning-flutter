@@ -71,27 +71,44 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    //With Splash Screen package
+    // return MaterialApp(
+    //   debugShowCheckedModeBanner: false,
+    //   home: SplashScreen(
+    //     seconds: 5,
+    //     // image: new Image.asset('assets/images/iphone_image.jpeg'),
+    //     imageBackground: AssetImage(
+    //         'assets/images/splash.jpeg'), //Adding an image at background
+    //     navigateAfterSeconds: Scaffold(
+    //       appBar: AppBar(
+    //         title: Text("First Flutter App"),
+    //       ),
+    //       body: _questionIndex < _questions.length
+    //           ? Quiz(
+    //               answerQuestion: _answerQuestion,
+    //               questionIndex: _questionIndex,
+    //               questions: _questions,
+    //             )
+    //           : Result(_totalScore, _resetQuiz),
+    //     ),
+    //     backgroundColor: Colors.lightBlueAccent,
+    //     loadingText: Text("Welcome to my App"),
+    //   ),
+    // );
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(
-        seconds: 5,
-        // image: new Image.asset('assets/images/iphone_image.jpeg'),
-        imageBackground: AssetImage(
-            'assets/images/splash.jpeg'), //Adding an image at background
-        navigateAfterSeconds: Scaffold(
-          appBar: AppBar(
-            title: Text("First Flutter App"),
-          ),
-          body: _questionIndex < _questions.length
-              ? Quiz(
-                  answerQuestion: _answerQuestion,
-                  questionIndex: _questionIndex,
-                  questions: _questions,
-                )
-              : Result(_totalScore, _resetQuiz),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("First Flutter App"),
         ),
-        backgroundColor: Colors.lightBlueAccent,
-        loadingText: Text("Welcome to my App"),
+        body: _questionIndex < _questions.length
+            ? Quiz(
+                answerQuestion: _answerQuestion,
+                questionIndex: _questionIndex,
+                questions: _questions,
+              )
+            : Result(_totalScore, _resetQuiz),
       ),
     );
   }
