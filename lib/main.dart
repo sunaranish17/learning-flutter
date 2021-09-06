@@ -75,12 +75,9 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: SplashScreen(
         seconds: 5,
-        title: Text(
-          "My First Flutter App",
-          style: TextStyle(fontSize: 17.0),
-        ),
-        image: new Image.asset('assets/images/iphone_image.jpeg'),
-        // imageBackground: AssetImage('assets/images/iphone_image.jpeg'), Adding an image at background
+        // image: new Image.asset('assets/images/iphone_image.jpeg'),
+        imageBackground: AssetImage(
+            'assets/images/splash.jpeg'), //Adding an image at background
         navigateAfterSeconds: Scaffold(
           appBar: AppBar(
             title: Text("First Flutter App"),
